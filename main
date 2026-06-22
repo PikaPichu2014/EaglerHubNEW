@@ -1,0 +1,138 @@
+(src/pages/Home.jsx):
+
+import React from "react";
+import { Gamepad2, ExternalLink } from "lucide-react";
+
+const clients = [
+  {
+    tag: "1.8",
+    name: "EaglerCraftX 1.8",
+    description: "An enhanced singleplayer + multiplayer client with extra mods and shaders.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/1.8/main/"
+  },
+  {
+    tag: "1.5.2",
+    name: "Eaglercraft 1.5.2",
+    description: "The original beta build of Eaglercraft. Lightweight and nostalgic.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/1.5.2/main/"
+  },
+  {
+    tag: "PvP",
+    name: "Resent Client",
+    description: "A popular PvP-focused Eaglercraft client packed with modules and HUD options.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/1.8/resent4.0/"
+  },
+  {
+    tag: "Modded",
+    name: "Shadow Client",
+    description: "A sleek modded client with a clean interface and performance tweaks.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/1.8/shadow_client_en_us"
+  },
+  {
+    tag: "PvP",
+    name: "Precision Client",
+    description: "A feature-rich client built for competitive PvP with custom modules and crosshairs.",
+    url: "https://ajselkdfkcmkgu.vercel.app/1.5.2/precisionbeta2/index.html"
+  },
+  {
+    tag: "Modded",
+    name: "Astra Client",
+    description: "A modern Eaglercraft client with a polished UI, mods, and quality-of-life tweaks.",
+    url: "https://sktjlaskrcghner.vercel.app/"
+  },
+  {
+    tag: "Modded",
+    name: "Starlike Client",
+    description: "The ultimate modded Eaglercraft client featuring unique blocks, items, and more.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/modded/1.8/starlike/"
+  },
+  {
+    tag: "Modded",
+    name: "Prism Client",
+    description: "An all-in-one client with rich customization of PvP and performance-enhancing modules.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/modded/1.8/prism-client"
+  },
+  {
+    tag: "Modded",
+    name: "EaglyMC Client",
+    description: "A modded Eaglercraft client with extra features and a custom experience.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/modded/1.8/EaglyMC/index.html"
+  },
+  {
+    tag: "1.8.8",
+    name: "Eaglercraft 1.8.8",
+    description: "The classic Eaglercraft 1.8.8 build for singleplayer and multiplayer in your browser.",
+    url: "https://ajselkdfkcmkgu.vercel.app/1.8/main1.8.8.html"
+  },
+  {
+    tag: "Modded",
+    name: "EaglerForge",
+    description: "A powerful modding framework client that lets you load and run Forge-style mods in Eaglercraft.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/modded/1.8/eaglerforge/"
+  },
+  {
+    tag: "Modded",
+    name: "EFI [u48 : v2.7]",
+    description: "A modded Eaglercraft client build with extra features and improvements.",
+    url: "https://eaglercraftx1-8.netlify.app/eagler-files/modded/1.8/ef_u48_v2.7_minify"
+  }
+];
+
+function ClientCard({ client }) {
+  return (
+    <a
+      href__={client.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex flex-col gap-3 border-4 border-border bg-card p-5 shadow-[6px_6px_0_0_hsl(var(--border))] transition-transform duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_0_hsl(var(--border))] active:translate-x-1 active:translate-y-1 active:shadow-[2px_2px_0_0_hsl(var(--border))]">
+      <div className="flex items-center justify-between gap-2">
+        <span className="inline-block bg-accent px-2 py-1 font-display text-[10px] leading-none text-accent-foreground">
+          {client.tag}
+        </span>
+        <ExternalLink className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+      </div>
+      <h2 className="font-display text-sm leading-relaxed text-primary text-balance">
+        {client.name}
+      </h2>
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        {client.description}
+      </p>
+      <span className="mt-2 inline-block self-start border-2 border-primary bg-primary px-3 py-2 font-display text-[10px] leading-none text-primary-foreground transition-colors group-hover:bg-card group-hover:text-primary">
+        PLAY NOW
+      </span>
+    </a>
+  );
+}
+
+export default function Home() {
+  return (
+    <div className="min-h-dvh bg-background">
+      <header className="flex flex-col items-center gap-4 border-b border-border px-4 py-12">
+        <div className="inline-flex items-center gap-3 border-4 border-border bg-card px-6 py-3 shadow-[4px_4px_0_0_hsl(var(--border))]">
+          <Gamepad2 className="h-6 w-6 text-primary" />
+          <span className="font-display text-lg text-foreground">EaglerHub</span>
+        </div>
+        <p className="max-w-md text-center text-sm leading-relaxed text-muted-foreground">
+          Click a button below to jump into a different Eaglercraft site. Each one opens Minecraft right in your browser, no download required.
+        </p>
+      </header>
+
+      <section className="mx-auto max-w-5xl px-4 py-12">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {clients.map((client) => (
+            <ClientCard key={client.name} client={client} />
+          ))}
+        </div>
+      </section>
+
+      <footer className="border-t border-border px-4 py-8 text-center">
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          EaglerHub is made by students and needs support to continue adding sites. Please add sites here on the discord:
+        </p>
+        <p className="mt-4 font-display text-xs text-primary">
+          Made by PikaPichu14
+        </p>
+      </footer>
+    </div>
+  );
+}
